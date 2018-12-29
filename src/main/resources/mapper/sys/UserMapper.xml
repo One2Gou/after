@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.go.after.sys.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.go.after.sys.model.User">
+        <id column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_id, user_name
+    </sql>
+    <select id="listUserToRole" resultType="map"
+            parameterType="com.baomidou.mybatisplus.plugins.pagination.Pagination">
+        select u.user_name as userName,r.role_name as roleName from t_user u
+        inner join t_user_role ur
+        on ur.user_id=u.user_id
+        inner join t_role r
+        on r.role_id=ur.role_id
+    </select>
+
+
+</mapper>

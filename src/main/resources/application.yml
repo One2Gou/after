@@ -1,0 +1,81 @@
+#项目名称
+server:
+  servlet:
+    context-path: /after
+  #配置启动端口号 只要端口不冲突 可以随便取
+  port: 2001
+
+#配置数据源
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        #请修改为自己的数据库并且修改username&password
+        url: jdbc:mysql://192.168.0.108:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+        username: root
+        password: 123
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+
+
+# Mybatis-plus
+mybatis-plus:
+  # 放在resource目录 classpath:/mapper/*Mapper.xml
+  mapper-locations: classpath:/mapper/**/*Mapper.xml
+  # 实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.go.after.*.model
+  typeEnumsPackage: com.go.after.*.model
+  global-config:
+    # 主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 0
+    # 字段策略 0:"忽略判断",1:"非 NULL 判断",2:"非空判断"
+    field-strategy: 2
+    # 驼峰下划线转换
+    db-column-underline: true
+    # 刷新mapper 调试神器
+    refresh-mapper: true
+    # 数据库大写下划线转换
+    #capital-mode: true
+    # 逻辑删除配置（下面3个配置）
+    logic-delete-value: 0
+    logic-not-delete-value: 1
+    # SQL 解析缓存，开启后多租户 @SqlParser 注解生效
+    sql-parser-cache: true
+  configuration:
+    #开启驼峰命名形式
+    map-underscore-to-camel-case: true
+    #是否开启缓存
+    cache-enabled: false
+    #打印SQL语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+# Swagger界面内容配置
+swagger:
+  title: After API接口文档
+  description: After Api Documentation
+  version: 1.0.0
+  termsOfServiceUrl: https://mp.csdn.net/postlist
+  contact:
+    name: eleya
+    url: https://mp.csdn.net/postlist
+    email: 1580259490@qq.com
+
+#pagehelper分页插件
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
