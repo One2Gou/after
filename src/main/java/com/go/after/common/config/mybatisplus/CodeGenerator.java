@@ -8,8 +8,6 @@ import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import com.baomidou.mybatisplus.toolkit.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -20,33 +18,9 @@ import java.util.Scanner;
  * @author Dong
  * 使用@PropertySource的类   则该类必须在Spring上下文中！
  */
-@PropertySource(value = "classpath:/config.properties")
 @Component
 public class CodeGenerator {
 
-    /**
-     * 数据源URL
-     */
-    @Value("${spring.datasource.master.url}")
-    private static String dataSourceUrl = "";
-
-    /**
-     * 数据源DriverName
-     */
-    @Value("${spring.datasource.master.driver-class-name}")
-    private static String dataSourceDriverName;
-
-    /**
-     * 数据库UserName
-     */
-    @Value("${spring.datasource.master.username}")
-    private static String dataSourceUserName;
-
-    /**
-     * 数据库PassWord
-     */
-    @Value("${spring.datasource.master.password}")
-    private static String dataSourcePassWord;
 
     /**
      * <p>
@@ -145,7 +119,7 @@ public class CodeGenerator {
         strategy.setRestControllerStyle(true);
         strategy.setSuperEntityColumns("id");
         strategy.setControllerMappingHyphenStyle(true);
-        strategy.setInclude(new String[]{"t_user_role","t_role"});
+        strategy.setInclude(new String[]{"t_user_role", "t_role"});
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();

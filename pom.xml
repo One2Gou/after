@@ -15,12 +15,20 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-    <java.version>1.8</java.version>
-</properties>
+        <!--Java版本号-->
+        <java.version>1.8</java.version>
+        <!--dynamic版本号-->
+        <dynamic.version>2.0.0</dynamic.version>
+        <!--druid版本号-->
+        <druid.version>1.1.10</druid.version>
+        <!--mybatis-plus版本号-->
+        <mybatis-plus.version>2.3.3</mybatis-plus.version>
+        <!--swagger版本号-->
+        <swagger.version>2.7.0</swagger.version>
+    </properties>
 
     <dependencies>
         <!--Spring begin -->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
@@ -46,62 +54,68 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <!--Spring end -->
+
+        <!--MySQL 驱动包 begin-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!--MySQL 驱动包 end-->
 
+        <!--简洁代码插件lombok begin-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <!--简洁代码插件lombok end-->
 
+        <!--通过dynamic实现多数据源  实现读写分离 begin-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>${dynamic.version}</version>
+        </dependency>
+        <!--通过dynamic实现多数据源  实现读写分离 end-->
 
-        <!-- 数据库连接池 -->
+        <!-- 数据库连接池druid begin -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.1.10</version>
+            <version>${druid.version}</version>
         </dependency>
+        <!-- 数据库连接池druid end -->
 
-        <!-- MybatisPlus -->
+        <!-- MybatisPlus begin -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>2.3.3</version>
+            <version>${mybatis-plus.version}</version>
         </dependency>
+        <!-- MybatisPlus end -->
 
         <!-- Swagger API文档 begin  -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.7.0</version>
+            <version>${swagger.version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.7.0</version>
+            <version>${swagger.version}</version>
         </dependency>
         <!-- Swagger API文档 end  -->
 
-        <!--配置命名容错处理-->
+        <!--配置命名容错处理 begin-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-
-        <!--通过dynamic实现多数据源  实现读写分离-->
-        <!--<dependency>-->
-        <!--<groupId>com.baomidou</groupId>-->
-        <!--<artifactId>dynamic-datasource-spring-boot-starter</artifactId>-->
-        <!--<version>1.0.0</version>-->
-        <!--</dependency>-->
+        <!--配置命名容错处理 end-->
 
     </dependencies>
 

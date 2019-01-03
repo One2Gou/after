@@ -1,5 +1,6 @@
 package com.go.after.sys.service.impl;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
@@ -26,11 +27,13 @@ import java.util.Map;
  */
 @Service
 @Slf4j
+@DS(value = "slave")
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
     @Autowired
     private UserMapper userMapper;
 
+    @DS(value = "slave_1")
     @Override
     public Page<User> listUser(Map<String, Object> args, PageBean pageBean) {
         //用户姓名 如果未传姓名
@@ -49,12 +52,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      * @param id
      * @return
      */
+    @DS(value = "master")
     @Override
     public boolean deleteById(Serializable id) {
         final Integer integer = userMapper.deleteById(id);
         return com.go.after.common.utils.SqlHelper.cudBool(integer);
     }
 
+
+    @DS(value = "slave_1")
     @Override
     public PageUtils listUserToRole(PageBean pageBean) {
         //设置页码和页大小
