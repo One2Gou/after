@@ -13,6 +13,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
 
+/**
+ * @author dong
+ */
 @Aspect
 @Component
 @Slf4j

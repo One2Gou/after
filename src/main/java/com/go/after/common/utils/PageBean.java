@@ -38,7 +38,7 @@ public class PageBean {
     /**
      * 存储的参数
      */
-    private Map<String, String[]> Parametermap;
+    private Map<String, String[]> parametermap;
 
     public PageBean() {
     }
@@ -53,7 +53,7 @@ public class PageBean {
 
     public void setPage(String page) {
         //如果需要翻页
-        if (page != null && !page.trim().equals("")) {
+        if (page != null && !"".equals(page.trim())) {
             this.page = Integer.parseInt(page);
         }
     }
@@ -68,7 +68,7 @@ public class PageBean {
 
     public void setRows(String rows) {
         //如果需要设置页大小
-        if (rows != null && !rows.trim().equals("")) {
+        if (rows != null && !"".equals(rows.trim())) {
             this.rows = Integer.parseInt(rows);
         }
     }
@@ -99,7 +99,7 @@ public class PageBean {
 
     public void setPagination(String pagination) {
         //如果需要分页
-        if (pagination != null && !pagination.trim().equals("")) {
+        if (pagination != null && !"".equals(pagination.trim())) {
             this.pagination = Boolean.parseBoolean(pagination);
         }
     }
@@ -113,11 +113,11 @@ public class PageBean {
     }
 
     public Map<String, String[]> getParametermap() {
-        return Parametermap;
+        return parametermap;
     }
 
     public void setParametermap(Map<String, String[]> parametermap) {
-        Parametermap = parametermap;
+        this.parametermap = parametermap;
     }
 
     /**
@@ -134,7 +134,7 @@ public class PageBean {
         this.url = request.getContextPath() + request.getServletPath();
 
         // 获取请求的传来的参数
-        this.Parametermap = request.getParameterMap();
+        this.parametermap = request.getParameterMap();
 
     }
 

@@ -15,7 +15,7 @@ spring:
           username: root
           password: 123
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://192.168.43.135:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+          url: jdbc:mysql://192.168.0.106:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
           type: com.alibaba.druid.pool.DruidDataSource
           filters: stat
           maxActive: 20
@@ -34,7 +34,7 @@ spring:
           username: root
           password: 123
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://192.168.43.70:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+          url: jdbc:mysql://192.168.0.107:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
           type: com.alibaba.druid.pool.DruidDataSource
           filters: stat
           maxActive: 20
@@ -53,7 +53,7 @@ spring:
           username: root
           password: 123
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://192.168.43.70:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+          url: jdbc:mysql://192.168.0.107:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
           type: com.alibaba.druid.pool.DruidDataSource
           filters: stat
           maxActive: 20
@@ -113,9 +113,11 @@ swagger:
     url: https://mp.csdn.net/postlist
     email: 1580259490@qq.com
 
-#pagehelper分页插件
-pagehelper:
-    helperDialect: mysql
-    reasonable: true
-    supportMethodsArguments: true
-    params: count=countSql
+#apollo配置
+apollo:
+  #指定eureka  请自行修改对应的
+  meta: http://192.168.0.106:8080
+  bootstrap:
+    enabled: true
+    eagerLoad:
+      enabled: true

@@ -25,6 +25,8 @@
         <mybatis-plus.version>2.3.3</mybatis-plus.version>
         <!--swagger版本号-->
         <swagger.version>2.7.0</swagger.version>
+        <!--apollo版本号-->
+        <apollo.version>1.1.0</apollo.version>
     </properties>
 
     <dependencies>
@@ -116,6 +118,14 @@
             <optional>true</optional>
         </dependency>
         <!--配置命名容错处理 end-->
+
+        <!--分布式配置中心apollo begin-->
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-client</artifactId>
+            <version>${apollo.version}</version>
+        </dependency>
+        <!--分布式配置中心apollo end-->
 
     </dependencies>
 
