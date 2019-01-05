@@ -27,7 +27,6 @@ import java.util.Map;
  */
 @Service
 @Slf4j
-@DS(value = "slave")
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
     @Autowired
@@ -70,6 +69,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         mapPage.setRecords(maps);
         final PageUtils pageUtils = new PageUtils(mapPage.getRecords(), mapPage.getTotal());
         return pageUtils;
+    }
+
+    @Override
+    public Integer addUser(User user) {
+        final Integer insert = userMapper.insert(user);
+        return insert;
     }
 
 

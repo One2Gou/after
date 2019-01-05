@@ -21,6 +21,7 @@ public interface IUserService extends IService<User> {
 
     /**
      * 用户查询分页+条件
+     *
      * @param args
      * @param pageBean
      * @return
@@ -39,9 +40,17 @@ public interface IUserService extends IService<User> {
     /**
      * 查询用于拥有的角色
      *
-     * @param  pageBean
+     * @param pageBean
      * @return
      */
     PageUtils listUserToRole(PageBean pageBean);
+
+    /**
+     * 添加用户
+     *
+     * @param user
+     * @return
+     */
+    Integer addUser(User user);
 
 }

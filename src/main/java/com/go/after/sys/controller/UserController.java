@@ -59,8 +59,7 @@ public class UserController extends BaseController {
         if (errorMap != null) {
             return ResultUtil.getError(-1, "数据效验错误", errorMap);
         }
-
-        final boolean insert = userService.insert(user);
+        boolean insert = userService.insert(user);
         if (insert) {
             return ResultUtil.getSuccess(null);
         } else {
